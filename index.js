@@ -8,6 +8,8 @@ let svgHeight = 200;
 
 let textValueY = undefined;
 
+let hexCode = undefined;
+
 const questions = [
     {
         type: "input",
@@ -23,8 +25,9 @@ const questions = [
         "For a list of supported colors, please go to https://www.w3schools.com/tags/ref_colornames.asp.\n" + 
         "For an explanation of hexadecimal color values, please go to https://www.pluralsight.com/blog/tutorials/understanding-hexadecimal-colors-simple",
         default: "Sky Blue",
-        filter: filterColor,
-        validate: validateColor
+        validate: validateColor,
+        filter: filterColor
+        
     },
     {
         type: "list",
@@ -40,13 +43,14 @@ const questions = [
         "For a list of supported colors, please go to https://www.w3schools.com/tags/ref_colornames.asp. \n" + 
         "For an explanation of hexadecimal color values, please go to https://www.pluralsight.com/blog/tutorials/understanding-hexadecimal-colors-simple",
         default: "Steel Blue",
-        filter: filterColor,
-        validate: validateColor
+        validate: validateColor,
+        filter: filterColor
     }
 ]
 
 async function begin(){
-
+    debugger;
+    hexCode = false;
     let responses = await askQuestions();
     let svgHTML = generateSVG(responses);
     saveSVGFile(svgHTML);
@@ -84,7 +88,7 @@ function generateSVG(responses){
 
     let XMLMarkup = 
     
-    `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:50%;left:50%;transform:translate(-50%, -50%)">
+    `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
         ${generatedShapeXML}
         <text x="50%" y="${textValueY}" font-size="60" text-anchor="middle" fill="${responses.textColor}">${responses.text}</text>
     </svg>`
@@ -95,21 +99,29 @@ function generateSVG(responses){
 
 function saveSVGFile(svgHTML){
 
+    let message = "";
+
     fs.writeFile("logo.svg", svgHTML, function(error){
 
         if(error === true){
 
-            console.log(error);
+            message = error
+
+            
         
         } else {
 
-            console.log("Generated logo.svg")
-        } 
+            message = "Generated logo.svg"
+        }
+
+        console.log(message);
+
     });
 }
 
 function validateColor(input){
 
+    console.log("validation")
     let basicColor = false;
     
     // I used the Xpert Learning Assistant AI to help me here.
@@ -121,22 +133,31 @@ function validateColor(input){
 
     } else {
 
-        const pattern = /^[0-9A-Fa-f]{1,6}$/
-
-        if(pattern.test(input) === true){
-
-            return true
+        if(hexCode === true){
+            
+            return hexCode;
         
         } else {
 
-            return "That was an invalid response.  Please try again."
+            return "That was an invalid response.  Please try again.  Please enter the name of a color or a six digit hex code."
         }
     }      
 }
 
 function filterColor(input){
+
+    console.log("filtration")
     input = input.replace(new RegExp(" ", 'g'), '');
     input = input.toLowerCase();
+
+    const pattern = /^[0-9A-Fa-f]{6}$/
+
+    if(pattern.test(input) === true){
+        
+        hexCode = true;
+        input = "#" + input;
+    }
+
     return input;
 }
 
