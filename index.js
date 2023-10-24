@@ -1,5 +1,6 @@
-const {Circle, Rectangle, Triangle} = require('./lib/shapes');
+const {Circle, Rectangle, Triangle} = require('./lib/shapes.js');
 const colors = require('./lib/colors.js');
+const generateText = require('./lib/text.js')
 const inquirer = require('inquirer');
 const fs = require('fs');
 
@@ -88,10 +89,12 @@ function generateSVG(responses){
 
     let XMLMarkup = 
     
-    `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-        ${generatedShapeXML}
-        <text x="50%" y="${textValueY}" font-size="60" text-anchor="middle" fill="${responses.textColor}">${responses.text}</text>
-    </svg>`
+
+    /* I put the SVG string together this way because I was having issues with the SVG string not being indented properly. */
+    `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"> \n\t`+
+        `${generatedShapeXML} \n\t` +
+        `${generateText(responses.text, responses.textColor, textValueY)} \n` +
+    `</svg>`
 
     return XMLMarkup;
 
@@ -176,3 +179,5 @@ function validateText(input){
 }
 
 begin();
+
+module.exports = generateText;
