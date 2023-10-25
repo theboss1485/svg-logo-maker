@@ -55,9 +55,9 @@ I had a tutoring session with Erik Hoversten and he showed me the syntax for wri
 
 I also used the Xpert Learning Assistant AI chatbot to help out with writing the code.
 
-I used the SVG documentation used at [developer.mozilla.org](developer.mozilla.org) to help me with the SVG portion of this assignment.  This includes but isn't limited to:
-[https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes) and 
-[https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts)
+I used the SVG documentation used at [developer.mozilla.org](developer.mozilla.org) to help me writing the render() methods in the shapes.js file, and also the generateText() method in the text.js file.  
+This documentation includes but isn't limited to:[https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes) and 
+[https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts).
 
 ## License
 
