@@ -182,7 +182,8 @@ function validateText(input){
 
     const pattern = /^.{1,3}$/
 
-    if(pattern.test(input) === true){
+    // I added the trim function here to make sure the user didn't enter just whitespace characters.
+    if(pattern.test(input.trim()) === true){
 
         return true
 
