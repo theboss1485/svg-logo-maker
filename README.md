@@ -40,20 +40,24 @@ Here is a screenshot of the tests passing successfully:
 
 ## Walkthrough Video Explanation
 
-To view the walkthrough video for the SVG Logo Generator, please use the following link: 
-[https://drive.google.com/file/d/16WVV9y6r11G7x9MMxeYuXyK1FsjOtuyC/view](https://drive.google.com/file/d/16WVV9y6r11G7x9MMxeYuXyK1FsjOtuyC/view)
+To view the walkthrough video for the SVG Logo Generator, please use the following link:
+[https://drive.google.com/file/d/1p0Gh7AahQeqX4BtjfrI8U1G3cDFLrxWK/view](https://drive.google.com/file/d/1p0Gh7AahQeqX4BtjfrI8U1G3cDFLrxWK/view) 
 
 I have also included the video in this repository in the folder lib/assets/videos.
 
 Before actually running the program, I run the command "npm run test", which runs the script "test", thereby running my tests.
 
-The program begins by asking the user what text he or she wants on the logo.  The user can enter from one to three characters.  For this walkthrough video, I choose the word "Cat".  The program will then ask the user what color they want the text to be.   The user can choose a hex color value, or type in a predefined color.  For this walkthrough, I choose the color blue.  The program will then ask what shape the SVG logo should be.  The user can use the arrow keys to choose between circle, rectangle and triangle.  For this walkthrough, I choose a circle.  The program will then ask what color the SVG logo should be.  For this video, I choose the hex color of ff0055.  Once I receive the message "Generated logo.svg", I then click on the .svg file that just appeared in the file structure on the left and press ALT + B to open it in the browser.   I didn't open it by right-clicking and choosing Open in Default Browser because this option isn't given when right-clicking on SVG files.
+The program begins by asking the user what text he or she wants on the logo.  The user can enter from one to three characters.  For this walkthrough video, I choose the word "Cat".  The program will then ask the user what color they want the text to be.   The user can choose a hex color value, or type in a predefined color.  For this walkthrough, I choose the color blue.  The program will then ask what shape the SVG logo should be.  The user can use the arrow keys to choose between circle, rectangle and triangle.  For this walkthrough, I choose a circle.  The program will then ask what color the SVG logo should be.  For this video, I choose the hex color of ff0055.  Once I receive the message "Generated logo.svg", I then click on the .svg file that just appeared in the file structure on the left and press ALT + B to open it in the browser.  This is why the file appears to open rather suddenly.   I didn't open it by right-clicking and choosing Open in Default Browser because this option isn't given when right-clicking on SVG files.
 
 ## Credits
 
 I had a tutoring session with Erik Hoversten and he showed me the syntax for writing a couple of the tests.
 
 I also used the Xpert Learning Assistant AI chatbot to help out with writing the code.
+
+I used the SVG documentation used at [developer.mozilla.org](developer.mozilla.org) to help me with the SVG portion of this assignment.  This includes but isn't limited to:
+[https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes) and 
+[https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts)
 
 ## License
 
