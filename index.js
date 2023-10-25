@@ -118,7 +118,7 @@ function generateSVG(responses){
 // This function saves the new SVG logo to the file "logo.svg".
 function saveSVGFile(svgHTML){
 
-    fs.writeFile("./lib/logo.svg", svgHTML, function(error){
+    fs.writeFile("./examples/logo.svg", svgHTML, function(error){
 
         if(error){
 
