@@ -52,15 +52,15 @@ const questions = [
 
 // This is the 'main' function of the application.  The program runs it to start the application.
 async function begin(){
-    debugger;
+    
     hexCode = false;
     let responses = undefined
 
     try{
 
-         responses = await askQuestions();
+        responses = await askQuestions();
 
-    }catch(error){
+    } catch(error){
 
         console.log(error.message)
     }
@@ -68,7 +68,6 @@ async function begin(){
     let svgHTML = generateSVG(responses);
     saveSVGFile(svgHTML);
 }
-
 
 // This function asks the user questions during the execution of the program.
 async function askQuestions(){
@@ -104,7 +103,6 @@ function generateSVG(responses){
 
     let XMLMarkup = 
     
-
     /* I put the SVG string together this way because I was having issues with the SVG string not being indented properly. */
     `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg"> \n\t`+
         `${generatedShapeXML} \n\t` +
@@ -112,7 +110,6 @@ function generateSVG(responses){
     `</svg>`
 
     return XMLMarkup;
-
 }
 
 // This function saves the new SVG logo to the file "logo.svg".
@@ -128,9 +125,6 @@ function saveSVGFile(svgHTML){
 
             console.log("Generated logo.svg")
         }
-
-        
-
     });
 }
 
@@ -182,7 +176,6 @@ function filterColor(input){
 
     return input;
 }
-
 
 // This function validates the text the user entered take make sure it is at least one and no more than three characters.
 function validateText(input){
