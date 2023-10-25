@@ -11,6 +11,7 @@ let textValueY = undefined;
 
 let hexCode = undefined;
 
+// These are the questions that the program asks the user.
 const questions = [
     {
         type: "input",
@@ -49,21 +50,35 @@ const questions = [
     }
 ]
 
+// This is the 'main' function of the application.  The program runs it to start the application.
 async function begin(){
     debugger;
     hexCode = false;
-    let responses = await askQuestions();
+    let responses = undefined
+
+    try{
+
+         responses = await askQuestions();
+
+    }catch(error){
+
+        console.log(error.message)
+    }
+    
     let svgHTML = generateSVG(responses);
     saveSVGFile(svgHTML);
 }
 
 
+// This function asks the user questions during the execution of the program.
 async function askQuestions(){
 
     let responses = await inquirer.prompt(questions)
     return responses;
 }
 
+
+// This function takes the user's question responses and generates the SVG logo with them.
 function generateSVG(responses){
 
     let generatedShapeXML = undefined;
@@ -100,28 +115,27 @@ function generateSVG(responses){
 
 }
 
+// This function saves the new SVG logo to the file "logo.svg".
 function saveSVGFile(svgHTML){
 
-    let message = "";
+    fs.writeFile("./examples/logo.svg", svgHTML, function(error){
 
-    fs.writeFile("logo.svg", svgHTML, function(error){
+        if(error){
 
-        if(error === true){
+            console.log(error.message)
 
-            message = error
-
-            
-        
         } else {
 
-            message = "Generated logo.svg"
+            console.log("Generated logo.svg")
         }
 
-        console.log(message);
+        
 
     });
 }
 
+/* This function checks if the color the user passed in is either a named color or a hex color value.
+If it isn't either of those, the program asks the user to try again.*/
 function validateColor(input){
 
     console.log("validation")
@@ -147,6 +161,11 @@ function validateColor(input){
     }      
 }
 
+/* This function removes white space from the users input and then makes it lowercase. This is to avoid any potential issues with passing it into
+the SVG file.  Additionally, the function uses a regular expression to check if the user's input is a hex value.  I had the hex value check in this function
+because the filter function is called before the validate function in inquirer. I needed to check if the user's input was a hex code during the filtration
+function because I needed to add a pound sign (#) to the input if it was in fact a hex code. If I had checked if the user's input was a hex code during the validation 
+function, the filtration function would have already been called, and thus it would have been too late to add the pound sign.*/
 function filterColor(input){
 
     console.log("filtration")
@@ -164,9 +183,11 @@ function filterColor(input){
     return input;
 }
 
+
+// This function validates the text the user entered take make sure it is at least one and no more than three characters.
 function validateText(input){
 
-    const pattern = /^.{0,3}$/
+    const pattern = /^.{1,3}$/
 
     if(pattern.test(input) === true){
 
@@ -174,7 +195,7 @@ function validateText(input){
 
     } else {
 
-        return "Please enter between zero and three characters.  Try again."
+        return "Please enter between one and three characters.  Try again."
     }
 }
 
